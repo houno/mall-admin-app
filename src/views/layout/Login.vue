@@ -28,7 +28,9 @@
           重置
         </a-button>
       </a-form-model-item>
+ <router-link :to="{name:'Enroll'}">还没注册？去注册</router-link>
     </a-form-model>
+
   </div>
 </template>
 <script>
@@ -77,7 +79,7 @@ export default {
             console.log(res);
             this.$store.dispatch('setUserInfo', res);
             this.$router.push({
-              name: 'home',
+              name: 'Home',
             });
           }).catch((error) => {
             this.$message.error(error);

@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import Home from '../views/layout/Home.vue';
 import Login from '../views/layout/Login.vue';
 import store from '../store/index';
+import Enroll from '../views/layout/Enroll.vue';
 
 Vue.use(VueRouter);
 
@@ -19,6 +20,11 @@ const routes = [
     component: Login,
   },
   {
+    path: '/enroll',
+    name: 'Enroll',
+    component: Enroll,
+  },
+  {
     path: '/about',
     name: 'About',
     // route level code-splitting
@@ -33,7 +39,7 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  if (to.path !== '/login') {
+  if (to.path !== '/login' && to.path !== '/enroll') {
     if (store.state.user.appkey
              && store.state.user.username
              && store.state.user.role) {
