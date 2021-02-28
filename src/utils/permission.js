@@ -25,7 +25,7 @@ const routeToRoute = {
       name: 'ProductAdd',
     },
     {
-      name: 'category',
+      name: 'Category',
     },
   ],
 };

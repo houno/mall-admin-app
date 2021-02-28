@@ -34,11 +34,10 @@ export default {
     },
     logout() {
       this.$store.dispatch('logout');
-      this.$route.push({
+      this.$router.push({
         name: 'Login',
       });
     },
   },
 };
 </script>
-登入状态校验
