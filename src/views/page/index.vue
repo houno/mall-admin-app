@@ -1,10 +1,12 @@
 <template>
-    <div>
-        <div class="index">
-                <card />
-                <carts />
-        </div>
+  <div>
+    <div class="index">
+      <!-- 卡片 -->
+      <card />
+      <!-- 统计图 -->
+      <carts />
     </div>
+  </div>
 </template>
 
 <script>
@@ -16,8 +18,6 @@ export default {
   components: {
     Card,
     Carts,
-
   },
-
 };
 </script>
