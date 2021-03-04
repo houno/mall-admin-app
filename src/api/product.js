@@ -1,7 +1,7 @@
 import axios from '@/axios';
 
 export default {
-  categoryList(params) {
-    return axios.get('/category/all', params);
+  list(params) {
+    return axios.get('/products/all', { params });
   },
 };

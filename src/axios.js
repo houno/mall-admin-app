@@ -7,11 +7,9 @@ const instance = axios.create({
 
 instance.interceptors.request.use(
   (config) => {
-    console.log(config);
     if (config.url.includes('/password')) {
       return config;
     }
-
     return {
       ...config,
       params: {
@@ -25,7 +23,6 @@ instance.interceptors.request.use(
 
 instance.interceptors.response.use(
   (response) => {
-    console.log(response);
     if (response.data.status === 'fail') {
       return Promise.reject(response.data.msg);
     }

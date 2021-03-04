@@ -17,7 +17,7 @@
                   @change="handleChange"
                   allowClear>
 
-          <a-select-option v-for="c in categoryList"
+          <a-select-option v-for="c in data"
                            :key="c.id"
                            :value="c.id">
             {{c.name}}
@@ -36,7 +36,6 @@
 </template>
 
 <script>
-import api from '@/api/category';
 
 export default {
   data() {
@@ -49,11 +48,9 @@ export default {
     };
   },
   created() {
-    api.categoryList().then((res) => {
-      this.categoryList = res.data;
-      console.log(res);
-    });
+
   },
+  props: ['data'],
   methods: {
     //   提交表单是触发的数据
     handleSubmit() {
