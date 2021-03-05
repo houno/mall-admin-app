@@ -7,8 +7,13 @@
               :title="item.title" />
     </a-steps>
     <div class="steps-content">
-      <basic-detail v-if="current ===0" @next="next" />
-      <sale-detail v-else-if="current ===1" />
+      <basic-detail v-if="current ===0"
+                    @next="next"
+                    :form="form" />
+      <sale-detail v-else-if="current ===1"
+                   @next="next"
+                   @prev="prev"
+                   :form="form" />
     </div>
   </div>
 </template>
@@ -16,10 +21,23 @@
 <script>
 import BasicDetail from '@/components/basicDetail.vue';
 import SaleDetail from '@/components/saleDetail.vue';
+import api from '@/api/product';
 
 export default {
   data() {
     return {
+      form: {
+        title: '',
+        desc: '',
+        category: '',
+        c_items: [],
+        tags: [],
+        price: 0,
+        price_off: 0,
+        inventory: '',
+        unit: '',
+        images: [],
+      },
       current: 0,
       steps: [
         {
@@ -32,9 +50,24 @@ export default {
     };
   },
   methods: {
-    next() {
-      this.current += 1;
-      console.log(this.form);
+    next(form) {
+      this.form = {
+        ...this.form,
+        form,
+      };
+      if (this.current === 1) {
+        //   提交数据
+        console.log(this.form);
+        api.add(this.form).then((res) => {
+          console.log(res);
+          this.$message.success('新增成功');
+          this.$router.push({
+            name: 'ProductList',
+          });
+        });
+      } else {
+        this.current += 1;
+      }
     },
     prev() {
       this.current -= 1;

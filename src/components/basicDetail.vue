@@ -51,7 +51,7 @@
         </a-select>
 
       </a-form-model-item>
-      <a-form-model-item label=" " class="next-btn">
+      <a-form-model-item label="" class="next-btn" :wrapperCol="{span:24}">
           <a-button type="primary" @click="next">下一步</a-button>
           </a-form-model-item>
     </a-form-model>
@@ -64,13 +64,7 @@ import categoryApi from '@/api/category';
 export default {
   data() {
     return {
-      form: {
-        title: '',
-        desc: '',
-        category: '',
-        c_items: [],
-        tags: '包邮,最晚次日达',
-      },
+
       rules: {},
       categoryList: [],
       categoryItems: [],
@@ -81,6 +75,7 @@ export default {
       this.categoryList = res.data;
     });
   },
+  props: ['form'],
   methods: {
     changeCategory(category) {
       for (let i = 0; i < this.categoryList.length; i += 1) {
