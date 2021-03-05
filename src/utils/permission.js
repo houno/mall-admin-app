@@ -8,6 +8,9 @@ const routeToRoute = {
       name: 'Product',
     },
     {
+      name: 'ProductEdit',
+    },
+    {
       name: 'ProductList',
     },
     {
@@ -17,6 +20,9 @@ const routeToRoute = {
   admin: [
     {
       name: 'Product',
+    },
+    {
+      name: 'ProductEdit',
     },
     {
       name: 'ProductList',

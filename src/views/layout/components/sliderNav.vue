@@ -56,9 +56,10 @@ export default {
 
 <style lang="less">
 .user-info{
-    position: fixed;
+    position: absolute;
     right: 0;
     top: 0;
     z-index: 1;
+
 }
 </style>

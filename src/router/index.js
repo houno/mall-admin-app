@@ -8,6 +8,11 @@ import Enroll from '../views/layout/Enroll.vue';
 
 Vue.use(VueRouter);
 
+const originalPush = VueRouter.prototype.push;
+VueRouter.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch((err) => err);
+};
+
 const ayncRouterMap = [
   {
     path: '/product',
@@ -38,6 +43,16 @@ const ayncRouterMap = [
           icon: 'file-add',
         },
         component: () => import('../views/page/productAdd.vue'),
+      },
+      {
+        path: 'edit/:id',
+        name: 'ProductEdit',
+        meta: {
+          title: '商品编辑',
+          hidden: true,
+          icon: 'file-add',
+        },
+        component: () => import('../views/page/productEdit.vue'),
       },
       {
         path: 'category',
